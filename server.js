@@ -20,33 +20,6 @@ db.select('*').from('users').then(data =>{
 
 const app = express();
 
-const database = {
-	users: [
-		{
-			id: '123',
-			name: 'John',
-			email: 'john@gmail.com',
-			password: 'cookies',
-			entries: 0,
-			joined: new Date()		
-		},
-		{
-			id: '124',
-			name: 'Sally',
-			email: 'sally@gmail.com',
-			password: 'bananas',
-			entries: 0,
-			joined: new Date()	
-		}
-	],
-	login: [
-		{
-			id: '987',
-			hash: '',
-			email: 'john@gmail.com'
-
-		}]
-}
 
 app.use(bodyParser.json());
 app.use(cors())
@@ -126,7 +99,7 @@ app.put('/image', (req, res) =>{
 	.catch(err => res.status(400).json('unable to get entries'))
 })
 
-app.listen(3000, ()=>{
-	console.log('app is running in port 3000');
+app.listen(process.env.PORT || 3000, ()=>{
+	console.log(`app is running in port ${process.env.PORT`);
 })
 
